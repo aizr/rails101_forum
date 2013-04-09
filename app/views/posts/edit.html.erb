@@ -1,0 +1,6 @@
+<%= form_for @post, :url => board_post_path(@board, @post) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+<% end %>
+
+
+<%= link_to "back to posts list", board_posts_path(@board) %>
