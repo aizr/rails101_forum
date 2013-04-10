@@ -2,9 +2,19 @@
   <%= f.label :name, "title" %>
   <%= f.text_field :name %>
 </div>
+<br />
 <div>
   <%= f.label :content %>
   <%= f.text_area :content %>
+</div>
+<br />
+<div class="field">
+  <%= f.label :upload_image %><br />
+  <%= f.file_field :image %>
+</div>
+
+<div>
+  <%= image_tag(@post.image.url(:thumb)) %>
 </div>
 
 <%= f.submit %>

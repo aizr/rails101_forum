@@ -1,6 +1,12 @@
 <div>title:<%= @post.name %></div>
 <div>content:<%= @post.content %></div>
 
+<% if @post.image %>
+  <p>
+    <%= image_tag(@post.image.url(:show)) %>
+  </p>
+<% end %>
+
 <%= link_to "Back to list", board_posts_path(@board) %>
 <% if current_user && @post.user == current_user %>
   <%= link_to "edit", edit_board_post_path(@board, @post) %>

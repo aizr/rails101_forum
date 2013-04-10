@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content, :name
+  attr_accessible :content, :name, :image
 
   belongs_to :board, :counter_cache => true
   belongs_to :user
