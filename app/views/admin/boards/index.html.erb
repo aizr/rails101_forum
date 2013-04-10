@@ -1,0 +1,12 @@
+<ul>
+  <% @boards.each do |board| %>
+    <li>
+      <%= board.name %>
+      <%= link_to "Show", board_path(board) %>
+      <%= link_to "Edit", edit_admin_board_path(board) %>
+      <%= link_to "Delete", admin_board_path(board), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Board", new_admin_board_path %>

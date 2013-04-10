@@ -3,10 +3,14 @@
     <li>
       <%= board.name %>
       <%= link_to "Show", board_path(board) %>
-      <%= link_to "Edit", edit_board_path(board) %>
-      <%= link_to "Delete", board_path(board), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+      <% if current_user && current_user.is_admin? %>
+        <%= link_to "Admin Edit", edit_admin_board_path(board) %>
+        <%= link_to "Admin Delete", admin_board_path(board), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+      <% end %>
     </li>
   <% end %>
 </ul>
 
-<%= link_to "New Board", new_board_path %>
+<% if current_user && current_user.is_admin? %>
+  <%= link_to "Admin New Board", new_admin_board_path %>
+<% end %>

@@ -6,3 +6,7 @@
   <%= link_to "edit", edit_board_post_path(@board, @post) %>
   <%= link_to "delete", board_post_path(@board, @post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
 <% end %>
+
+<% if current_user && current_user.is_admin? %>
+  <%= link_to "Admin edit post", edit_admin_board_post_path(@board, @post) %>
+<% end %>

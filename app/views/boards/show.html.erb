@@ -12,8 +12,14 @@
         <%= link_to "eidt post", edit_board_post_path(@board, post) %>
         <%= link_to "delete post", board_post_path(@board, post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
       <% end %>
+
+      <% if current_user && current_user.is_admin? %>
+        <%= link_to "Admin eidt post", edit_admin_board_post_path(@board, post) %>
+        <%= link_to "Admin delete post", admin_board_post_path(@board, post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+      <% end %>
     </li>
   <% end %>
 </ul>
 
 <%= link_to "back to board lists", boards_path %>
+<%= link_to "Admin edit this board", edit_admin_board_path(@board) if current_user && current_user.is_admin? %>
