@@ -5,21 +5,7 @@
 </p>
 
 <ul>
-  <% @posts.each do |post| %>
-    <li>
-      <%= post.name %>
-      <%= link_to "show post", board_post_path(@board, post) %>
-      <% if current_user && post.user == current_user %>
-        <%= link_to "eidt post", edit_board_post_path(@board, post) %>
-        <%= link_to "delete post", board_post_path(@board, post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
-      <% end %>
-
-      <% if current_user && current_user.is_admin? %>
-        <%= link_to "Admin eidt post", edit_admin_board_post_path(@board, post) %>
-        <%= link_to "Admin delete post", admin_board_post_path(@board, post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
-      <% end %>
-    </li>
-  <% end %>
+  <%= render :partial => "post", :collection => @posts %>
 </ul>
 <%= will_paginate(@posts) %>
 <br />

@@ -1,0 +1,13 @@
+<li>
+  <%= post.name %>
+  <%= link_to "show post", board_post_path(@board, post) %>
+  <% if current_user && post.user == current_user %>
+    <%= link_to "Edit Post", edit_board_post_path(@board, post) %>
+    <%= link_to "delete post", board_post_path(@board, post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+  <% end %>
+
+  <% if current_user && current_user.is_admin? %>
+    <%= link_to "Admin Edit post", edit_admin_board_post_path(@board, post) %>
+    <%= link_to "Admin Delete post", admin_board_post_path(@board, post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+  <% end %>
+</li>
