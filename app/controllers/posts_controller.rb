@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def create
     @post = @board.posts.build(params[:post])
+    @post.user_id = current_user.id
     if @post.save
       redirect_to board_post_path(@board, @post)
     end
@@ -22,24 +23,25 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = @board.posts.find(params[:id]) 
+    @post = current_user.posts.find(params[:id])
   end
 
   def update
-    @post = @board.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.update_attributes(params[:post])
 
     redirect_to board_post_path(@board,@post)
   end
 
   def destroy
-    @post = @board.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
 
     redirect_to board_posts_path(@board)
   end
 
   protected
+
   def find_board
     @board = Board.find(params[:board_id])
   end

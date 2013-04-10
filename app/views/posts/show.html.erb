@@ -2,5 +2,7 @@
 <div>content:<%= @post.content %></div>
 
 <%= link_to "Back to list", board_posts_path(@board) %>
-<%= link_to "edit", edit_board_post_path(@board, @post) %>
-<%= link_to "delete", board_post_path(@board, @post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+<% if current_user && @post.user == current_user %>
+  <%= link_to "edit", edit_board_post_path(@board, @post) %>
+  <%= link_to "delete", board_post_path(@board, @post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+<% end %>
