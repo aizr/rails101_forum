@@ -4,14 +4,14 @@
 </p>
 
 <ul>
-<% @posts.each do |post| %>
-  <li>
-  <%= post.name %>
-  <%= link_to "show post", board_post_path(@board, post) %>
-  <%= link_to "eidt post", edit_board_post_path(@board, post) %>
-  <%= link_to "delete post", board_post_path(@board, post), :confirm => "Are you sure?", :method => :delete %>
-  </li>
-<% end %>
+  <% @posts.each do |post| %>
+    <li>
+      <%= post.name %>
+      <%= link_to "show post", board_post_path(@board, post) %>
+      <%= link_to "eidt post", edit_board_post_path(@board, post) %>
+      <%= link_to "delete post", board_post_path(@board, post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+    </li>
+  <% end %>
 </ul>
 
 <%= link_to "back to board lists", boards_path %>
