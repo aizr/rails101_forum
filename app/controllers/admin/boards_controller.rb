@@ -4,7 +4,7 @@ class Admin::BoardsController < ApplicationController
   before_filter :require_is_admin
 
   def index
-    @boards = Board.all
+    @boards = Board.paginate(:page => params[:page], :per_page => 5)
   end
 
   def new
@@ -13,9 +13,9 @@ class Admin::BoardsController < ApplicationController
 
   def create
     @board = Board.new(params[:board])
-    if @board.save
-      respond_to do |foramt|
-        format.html { redirect_to board_path(@board), :notice => "Board was succesfully created." }
+    respond_to do |format|
+      if @board.save
+        format.html { redirect_to(board_path(@board), :notice => "Board was succesfully created.") }
       end
     end
   end
@@ -29,7 +29,7 @@ class Admin::BoardsController < ApplicationController
     @board.update_attributes(params[:board])
 
     respond_to do |format|
-      format.html { redirect_to board_path(@board), :notice => "Board was succesffully updated" }
+      format.html { redirect_to(board_path(@board), :notice => "Board was succesffully updated") }
     end
   end
 

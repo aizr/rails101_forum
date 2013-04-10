@@ -1,5 +1,6 @@
 <p>
   Name:<%= @board.name %>
+  | total posts:<%= @board.posts.size %>
   <%= link_to "creaet a new post", new_board_post_path(@board) %>
 </p>
 
@@ -20,6 +21,8 @@
     </li>
   <% end %>
 </ul>
+<%= will_paginate(@posts) %>
+<br />
 
 <%= link_to "back to board lists", boards_path %>
 <%= link_to "Admin edit this board", edit_admin_board_path(@board) if current_user && current_user.is_admin? %>

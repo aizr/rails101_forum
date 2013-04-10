@@ -11,6 +11,9 @@
   <% end %>
 </ul>
 
+<%= will_paginate(@boards) %>
+<br />
+
 <% if current_user && current_user.is_admin? %>
   <%= link_to "Admin New Board", new_admin_board_path %>
 <% end %>
