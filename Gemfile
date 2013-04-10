@@ -38,3 +38,4 @@ gem 'jquery-rails'
 # gem 'debugger'
 gem "devise"
 gem "will_paginate"
+gem "paperclip"
