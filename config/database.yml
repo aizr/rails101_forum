@@ -17,3 +17,12 @@ development:
   username: root
   password: '123456'
   socket: /tmp/mysql.sock
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: forum_production
+  pool: 5
+  username: root
+  password: '123456'
+  socket: /var/run/mysqld/mysqld.sock

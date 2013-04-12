@@ -13,8 +13,10 @@
   <%= f.file_field :image %>
 </div>
 
-<div>
-  <%= image_tag(@post.image.url(:thumb)) %>
-</div>
+<% if @post.image %>
+  <div>
+    <%= image_tag(@post.image.url(:thumb)) %>
+  </div>
+<% end %>
 
 <%= f.submit %>
