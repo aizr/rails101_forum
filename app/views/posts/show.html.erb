@@ -1,9 +1,15 @@
+<script type="text/javascript" defer="defer">
+jQuery(document).ready(function(){
+  $('a.fancybox').fancybox();
+});
+</script>
+
 <div>title:<%= @post.name %></div>
 <div>content:<%= @post.content %></div>
 
 <% if @post.image %>
   <p>
-    <%= image_tag(@post.image.url(:show)) %>
+    <%= link_to image_tag(@post.image.url(:show)), @post.image.url(:original), :class => :fancybox %>
   </p>
 <% end %>
 
