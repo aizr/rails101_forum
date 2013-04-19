@@ -26,13 +26,6 @@ set :deploy_env, "production"
 set :rails_env, "production"
 set :scm_verbose, true
 
-namespace :deploy do
-  desc "Restart passenger process"
-  task :restart, :roles => [:web], :except => { :no_release => true} do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-end
-
 namespace :my_task do
   task :symlink, :roles => [:web] do
     run "mkdir -p #{deploy_to}/shared/log"
@@ -48,11 +41,5 @@ namespace :my_task do
   end
 end
 
-namespace :remote_rake do
-  desc "Run a task on remote servers, ex: cap staging rake:invoke task=cache:clear"
-  task :invoke do
-    run "cd #{deploy_to}/current; RAILS_ENV=#{rails_env} bundle exec rake #{ENV['task']}"
-  end
-end
-
 after "deploy:finalize_update", "my_task:symlink"
+after "deploy:restart", "unicorn:reload"

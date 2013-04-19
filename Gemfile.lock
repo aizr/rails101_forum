@@ -39,6 +39,8 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
+    capistrano-unicorn (0.1.7)
+      capistrano
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -153,6 +155,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   capistrano-ext
+  capistrano-unicorn
   coffee-rails (~> 3.2.1)
   devise
   fancybox2-rails
