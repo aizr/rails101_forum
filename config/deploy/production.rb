@@ -42,4 +42,4 @@ namespace :my_task do
 end
 
 after "deploy:finalize_update", "my_task:symlink"
-after "deploy:restart", "unicorn:reload"
+after "deploy:restart", "unicorn:restart"
